@@ -19,7 +19,7 @@ sudo apt update
 sudo apt install gns3-gui gns3-server
 ```
 
-### Add user to groups
+### Add user to these groups
 
 ```
 sudo usermod -a -G docker $(whoami)
