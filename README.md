@@ -1,5 +1,5 @@
 
-# Part 1: GNS3 configuration with Docker
+# Virtual Machine Setup
 
 ### Install docker
 ```
@@ -9,19 +9,41 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
 sudo apt update
 sudo apt-get install docker-ce
-
-sudo usermod -a -G docker $(whoami)
 ```
+
+### Install gns3
+
+```
+sudo add-apt-repository ppa:gns3/ppa
+sudo apt update                                
+sudo apt install gns3-gui gns3-server
+```
+
+### Add user to groups
+
+```
+sudo usermod -a -G docker $(whoami)
+sudo usermod -a -G ubridge $(whoami)
+sudo usermod -a -G libvirt $(whoami)
+sudo usermod -a -G kvm $(whoami)
+sudo usermod -a -G wireshark $(whoami)
+```
+# Part 1
 
 ### Pull Images
 
 ```
 docker pull frrouting/frr
-
 docker pull alpine
 ```
 
+`And run commands in folder p1`
+
+
+# Notes
+
 ```
+ip addr add 10.12.12.69/16 dev enp0s3
 #ospf
 #ospfd
 #bgp
